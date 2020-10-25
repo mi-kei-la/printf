@@ -1,47 +1,52 @@
 #include <stdarg.h>
 #include <stdlib.h>
-#include "printf.h"
+#include <stdio.h>
+#include <unistd.h>
+#include "holberton.h"
 
 int _printf(const char *format, ...)
 {
-	int i, j = 0, strlen1, strlen2, thingie;
+	int charCount = 0, argLen = 0;
 	char c, temp = '%';
 	char *s;
 	va_list list;
 
 	va_start(list, format);
-	for (i = 0; format[i] != 0 ; i++)
+	while (*format != 0)
 	{
-		if (format[i] != temp && format)
+		if (*format != temp && format)
 		{
-			write(1, *(format + i), 1);
-			j++;
+			write(1, format, 1);
+			printf("char");
+			charCount++;
 		}
 		else
 		{
-			i++;
-			switch(format[i])
+			format++;
+			switch(*format)
 			{
 				case '%':
 					write(1, &temp, 1);
-					j++;
+					printf("case1");
+					charCount++;
 					break;
 				case 'c':
-					c = va_arg(list, char);
+					c = va_arg(list, int);
 					write(1, &c, 1);
-					j++;
+					printf("case2");
+					charCount++;
 					break;
 				case 's':
 					s = va_arg(list, char*);
-					for(strlen2 = 0; s[strlen2] != 0; strlen2++)
+					for(argLen = 0; *s != 0; argLen++, s++)
 					{
+					write(1, s, 1);
 					}
-					write(1, s, strlen2);
-					j += strlen2;
+					charCount += argLen;
 					break;
 			}
 		}
-
+		format++;
 	}
-	return (j);
+	return (charCount);
 }
