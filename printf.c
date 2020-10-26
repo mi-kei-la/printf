@@ -47,7 +47,6 @@ int suich(const char *format, va_list list)
 	{
 		case '%':
 			write(1, &temp, 1);
-			printf("case1");
 			charCount++;
 			break;
 		case 'c':
