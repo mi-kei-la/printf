@@ -27,7 +27,9 @@ int _printf(const char *format, ...)
 				write(1, &temp, 1);
 				return (-1);
 			}
-			else if (*(format + 1) == 'c' || *(format + 1) == 's' || *(format + 1) == '%')
+			else if (*(format + 1) == 'c'
+					|| *(format + 1) == 's'
+					|| *(format + 1) == '%')
 			{
 				format++;
 				charCount += suich(format, list);
