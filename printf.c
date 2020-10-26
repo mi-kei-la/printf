@@ -14,7 +14,7 @@ int _printf(const char *format, ...)
 	if (format == NULL || *format == 0)
 		return (-1);
 	va_start(list, format);
-	while (*format)
+	while (*format && format)
 	{
 		if (*format != temp)
 		{
@@ -65,10 +65,6 @@ int suich(const char *format, va_list list)
 			break;
 		case 'c':
 			c = va_arg(list, int);
-			if (c == 0)
-			{
-				return (0);
-			}
 			write(1, &c, charSize);
 			charCount++;
 			break;
@@ -76,13 +72,11 @@ int suich(const char *format, va_list list)
 			s = va_arg(list, char*);
 			if (s == NULL)
 				s = "(null)";
-			for (argLen = 0; *s != 0; argLen++, s++)
+			for (argLen = 0; *s != 0; argLen++, s++, charCount++)
 				write(1, s, charSize);
-			charCount += (argLen);
 			break;
 		default:
 			return (0);
-
 	}
 	return (charCount);
 }
