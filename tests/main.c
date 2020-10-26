@@ -3,9 +3,15 @@
 
 int main(void)
 {
-_printf("Hola:\n");
-_printf("Hola %s\n", "mundo");
-_printf("Hola %c\n", 'p');
-_printf("Hola %%\n");
+int x = 0;
+
+x = _printf("Hola:\n");
+printf("Return of last line: %i/n", x);
+x = _printf("Hola %s\n", "mundo");
+printf("Return of last line: %i/n", x);
+x = _printf("Hola %c\n", 'p');
+printf("Return of last line: %i/n", x);
+x = _printf("Hola %%\n");
+printf("Return of last line: %i/n", x);
 return (0);
 }

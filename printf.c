@@ -10,7 +10,7 @@
   */
 int _printf(const char *format, ...)
 {
-	int charCount = 0, i = 0;
+	int charCount = -1, i = 0;
 	char temp = '%';
 	va_list list;
 
@@ -27,7 +27,7 @@ int _printf(const char *format, ...)
 		else
 		{
 			format++;
-			suich(format, list);
+			i = suich(format, list);
 			charCount += i;
 		}
 		format++;
