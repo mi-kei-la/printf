@@ -23,7 +23,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			if (*(format + 1) == 0)
+			if (*(format + 1) == '\0')
 			{
 				write(1, &temp, charSize);
 				return (-1);
