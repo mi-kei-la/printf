@@ -77,7 +77,7 @@ int suich(const char *format, va_list list)
 				s = "(null)";
 			for (argLen = 0; *s != 0; argLen++, s++)
 				write(1, s, 1);
-			charCount += (argLen - 1);
+			charCount += (argLen);
 			break;
 		default:
 			write(1, &temp, 1);
