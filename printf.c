@@ -1,7 +1,3 @@
-#include <stdarg.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
 #include "holberton.h"
 /**
   * _printf - print efe
@@ -10,25 +6,37 @@
   */
 int _printf(const char *format, ...)
 {
-	int charCount = -1, i = 0;
+	int charCount = 0;
 	char temp = '%';
 	va_list list;
 
-	if (format == NULL)
+	if (format == NULL || *format == 0)
 		return (-1);
 	va_start(list, format);
-	while (*format != '\0')
+	while (*format)
 	{
-		if (*format != temp && format)
+		if (*format != temp)
 		{
 			write(1, format, 1);
 			charCount++;
 		}
 		else
 		{
-			format++;
-			i = suich(format, list);
-			charCount += i;
+			if (*(format + 1) == 0)
+			{
+				write(1, &temp, 1);
+				return (-1);
+			}
+			else if (*(format + 1) == 'c' || *(format + 1) == 's' || *(format + 1) == '%')
+			{
+				format++;
+				charCount += suich(format, list);
+			}
+			else
+			{
+				write(1, format, 1);
+				charCount++;
+			}
 		}
 		format++;
 	}
@@ -55,20 +63,24 @@ int suich(const char *format, va_list list)
 		case 'c':
 			c = va_arg(list, int);
 			if (c == 0)
-				return (-1);
+			{
+				return (0);
+			}
 			write(1, &c, 1);
 			charCount++;
 			break;
 		case 's':
 			s = va_arg(list, char*);
-			if (s == 0)
-				return (-1);
+			if (s == NULL)
+				s = "(null)";
 			for (argLen = 0; *s != 0; argLen++, s++)
 				write(1, s, 1);
-			charCount += argLen;
+			charCount += (argLen - 1);
 			break;
 		default:
-			return (-1);
+			write(1, &temp, 1);
+			charCount++;
+			break;
 
 	}
 	return (charCount);
