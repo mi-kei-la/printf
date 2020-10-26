@@ -11,7 +11,8 @@ int _printf(const char *format, ...)
 	va_list list;
 	unsigned int charSize = sizeof(char);
 
-	if (format == NULL || *format == '\0')
+	if (format == NULL || *format == '\0' ||
+			(*format == temp && *(format + 1) == '\0'))
 		return (-1);
 	va_start(list, format);
 	while (*format && format)
@@ -23,12 +24,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			if (*(format + 1) == '\0')
-			{
-				write(1, &temp, charSize);
-				return (-1);
-			}
-			else if (*(format + 1) == 'c'
+			if (*(format + 1) == 'c'
 					|| *(format + 1) == 's'
 					|| *(format + 1) == '%')
 			{
