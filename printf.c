@@ -80,8 +80,7 @@ int suich(const char *format, va_list list)
 			charCount += (argLen);
 			break;
 		default:
-			write(1, &temp, 1);
-			charCount++;
+			return(-1);
 			break;
 
 	}
