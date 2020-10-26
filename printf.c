@@ -81,7 +81,6 @@ int suich(const char *format, va_list list)
 			break;
 		default:
 			return (0);
-			break;
 
 	}
 	return (charCount);
