@@ -76,7 +76,8 @@ int suich(const char *format, va_list list)
 				write(1, s, charSize);
 			break;
 		default:
-			return (0);
+			write(1, format, charSize);
+			charCount++;
 	}
 	return (charCount);
 }
