@@ -11,7 +11,7 @@ int _printf(const char *format, ...)
 	va_list list;
 	unsigned int charSize = sizeof(char);
 
-	if (format == NULL || *format == 0+'0')
+	if (format == NULL || *format == '\0')
 		return (-1);
 	va_start(list, format);
 	while (*format && format)
