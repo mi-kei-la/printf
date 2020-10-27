@@ -10,11 +10,9 @@
   * Return: character count
   */
 
-int print_number(va_list list)
+int print_number(long int x)
 {
-	int y = 1, x;
-
-	x = va_arg(list, int);
+	int y = 1;
 
 	if (x < 0)
 	{
