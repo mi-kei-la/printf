@@ -16,6 +16,6 @@ int print_binary(unsigned int number)
 		y = print_binary(number >> 1) + 1;
 	x = (number & 1) ? 1 : 0;
 	_putchar(x + '0');
-	return (y + 1);
+	return (y);
 }
 
