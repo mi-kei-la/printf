@@ -10,21 +10,36 @@
   * Return: character count
   */
 
-int print_number(long x)
+int print_number(int x)
 {
-	int y = 0;
+	int y = 0, size = 0;
 
 	if (x < 0)
 	{
 		_putchar('-');
-		x = -x;
-	}
-	if (x / 10)
-	{
-		print_number(x / 10);
 		y++;
 	}
-	_putchar((x % 10) + '0');
-	y++;
+	size = print_nums(x);
+	return (y + size);
+}
+
+int print_nums(int x)
+{
+	int y = 0, j;
+
+	if (x / 10)
+	{
+		y += print_nums(x / 10) + 1;
+	}
+	if (x < 0)
+	{
+		j = x % 10;
+		_putchar(-j + '0');
+	}
+	else
+	{
+		j = x % 10;
+		_putchar(j + '0');
+	}
 	return (y);
 }

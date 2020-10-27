@@ -53,7 +53,7 @@ int suich(const char *format, va_list list)
 {
 	int charCount = 0, c, argLen = 0, charSize = sizeof(char);
 	char *s, temp = '%';
-	long int m, n;
+	int m, n;
 
 	switch (*format)
 	{
@@ -74,16 +74,17 @@ int suich(const char *format, va_list list)
 				write(1, s, charSize);
 			break;
 		case 'd':
-			n = va_arg(list, long);
+			n = va_arg(list, int);
 			charCount = print_number(n);
 			break;
 		case 'i':
-			m = va_arg(list, long);
+			m = va_arg(list, int);
 			charCount = print_number(m);
 			break;
 		default:
 			write(1, format, charSize);
 			charCount++;
+			break;
 	}
 	return (charCount);
 }
