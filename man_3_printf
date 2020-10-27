@@ -1,17 +1,36 @@
-.TH man 1 "26 October 2020" "0.32" "eniac man page"
+.TH man 3 "27 October 2020" "1.0" "_printf man page"
 .SH NAME
-.B eniac
-- the first electronic general-purpose digital computer.
+.B _printf
 .SH SYNOPSIS
-eniac
+.B #include "holberton.h"
+.PP
+int printf(const char *format, ...);
 .SH DESCRIPTION
-Eniac was Turing-complete, and able to solve "a large class of numerical problems" through reprogramming.
-.SH OPTIONS
-.B eniac
-does not take any options.
-.SH SEE ALSO
-ENIAC could be programmed to perform complex sequences of operations(2), including loops(2), branches(2), and subroutines(2).
+.B _printf "()
+Function produces output according to a format.
+.PP
+The function writes to
+.I stdout
+.PP
+_printf() takes a pointer to an array, and a variable list of arguments.
+.PP
+it iterates every character of the array and copies it to the standard output,
+.B when a "%" symbol is reached,
+the function checks if it's a format specifier, so it will check if the next character is an 's' (for string), 'c' (for character), 'i' or 'd' (for numbers). If it's true, then it will call the respective function to format the arguments passed by the va_list.
+.SH CONVERSION SPECIFIERS
+After a '%' is reached in the string, then it will check if the next character is:
+.PP
+.RS
+.B % - Prints a literal '%' symbol
+.PP
+.B s - String specifier, expects an array of characters, prints every character except the null byte
+.PP
+.B c - Character specifier, will take a character as an int and print it
+.PP
+.B d, i - Number specifier, takes an int and process it while printing every single number as a character
+.SH RETURN VALUE
+Upon successful return, the function will return the total number of characters printed (except the null byte used to end strings)
 .SH BUGS
-No known bugs.
+Unknown
 .SH AUTHOR
-Eze Kpo.
+Micaela Percovich && Ezequiel Martinez
