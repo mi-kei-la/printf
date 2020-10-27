@@ -26,7 +26,8 @@ int _printf(const char *format, ...)
 		{
 			if (*(format + 1) == 'c'
 					|| *(format + 1) == 's'
-					|| *(format + 1) == '%')
+					|| *(format + 1) == '%'
+			    || *(format + 1) == 'd' || *(format + 1) == 'i')
 			{
 				format++;
 				charCount += suich(format, list);
@@ -52,6 +53,7 @@ int suich(const char *format, va_list list)
 {
 	int charCount = 0, c, argLen = 0, charSize = sizeof(char);
 	char *s, temp = '%';
+	int m;
 
 	switch (*format)
 	{
@@ -70,6 +72,13 @@ int suich(const char *format, va_list list)
 				s = "(null)";
 			for (argLen = 0; *s != 0; argLen++, s++, charCount++)
 				write(1, s, charSize);
+			break;
+		case 'd':
+			m = va_arg(list, int);
+			charCount = print_number(m);
+		case 'i':
+			m = va_arg(list, int);
+			charCount = print_number(m);
 			break;
 		default:
 			write(1, format, charSize);

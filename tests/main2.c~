@@ -1,0 +1,16 @@
+#include "holberton.h"
+#include <limits.h>
+
+int main(void)
+{
+_printf("This should be 0 with d: %d, with i: %i", 0, 0);
+_printf("This should be 3 with d: %d, with i: %i", 3, 3);
+_printf("This should be -1 with d: %d, with i: %i", -1, -1);
+_printf("This should be 10 with d: %d, with i: %i", 10, 10);
+_printf("This should be 99 with d: %d, with i: %i", 99, 99);
+_printf("This should be -99 with d: %d, with i: %i", -99, -99);
+_printf("This should be 1024 with d: %d, with i: %i", 1024, 1024);
+_printf("This should be -4096 with d: %d, with i: %i", -4096, -4096);
+_printf("This should be INT_MAX with d: %d, with i: %i", INT_MAX, INT_MAX);
+_printf("This should be INT_MIN with d: %d, with i: %i", INT_MIN, INT_MIN);
+}
