@@ -10,9 +10,11 @@
   * Return: character count
   */
 
-int print_number(int x)
+int print_number(va_list list)
 {
-	int y = 1;
+	int y = 1, x;
+
+	x = va_arg(list, int);
 
 	if (x < 0)
 	{
@@ -22,7 +24,7 @@ int print_number(int x)
 	}
 	if (x / 10 != 0)
 	{
-		y = print_number(x / 10) + 1;
+		y = (print_number(x / 10) + 1);
 	}
 	_putchar((x % 10) + '0');
 	return (y);

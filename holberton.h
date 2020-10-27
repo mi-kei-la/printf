@@ -6,7 +6,7 @@
 #include <unistd.h>
 int _putchar(char c);
 int print_int(int x);
-int print_number(int x); 
+int print_number(va_list list); 
 int suich(const char *format, va_list list);
 int _printf(const char *format, ...);
 #endif
