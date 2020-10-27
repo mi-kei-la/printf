@@ -5,7 +5,7 @@
 /**
   * print_number - print an integer
   *
-  * @x: argument
+  * @list: list of arguments
   *
   * Return: character count
   */
