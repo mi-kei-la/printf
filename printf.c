@@ -74,11 +74,11 @@ int suich(const char *format, va_list list)
 				write(1, s, charSize);
 			break;
 		case 'd':
-			n = va_arg(list, int);
+			n = va_arg(list, long);
 			charCount = print_number(n);
 			break;
 		case 'i':
-			m = va_arg(list, int);
+			m = va_arg(list, long);
 			charCount = print_number(m);
 			break;
 		default:
