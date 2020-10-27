@@ -10,9 +10,11 @@
   * Return: character count
   */
 
-int print_number(int x)
+int print_number(va_list list)
 {
-	int y = 0, size = 0;
+	int x, y = 0, size = 0;
+
+	x = va_arg(list, int);
 
 	if (x < 0)
 	{
@@ -20,7 +22,7 @@ int print_number(int x)
 		y++;
 	}
 	size = print_nums(x);
-	return (y + size);
+	return (y + size + 1);
 }
 
 /**
