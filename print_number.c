@@ -23,6 +23,13 @@ int print_number(int x)
 	return (y + size);
 }
 
+/**
+  * print_nums - recursion for print_number function
+  *
+  * @x: parameter
+  * Return: byte size
+  */
+
 int print_nums(int x)
 {
 	int y = 0, j;
