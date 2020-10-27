@@ -7,6 +7,7 @@
 int _putchar(char c);
 int print_number(va_list list);
 int print_nums(int x);
+int print_binary(unsigned int number);
 int suich(const char *format, va_list list);
 int _printf(const char *format, ...);
 #endif
