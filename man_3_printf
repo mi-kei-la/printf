@@ -12,24 +12,32 @@ Function produces output according to a format.
 The function writes to
 .I stdout
 .PP
-_printf() takes a pointer to an array, and a variable list of arguments.
+_printf() takes a string (array of chars) as format input, and a variable list of arguments.
 .PP
-it iterates every character of the array and copies it to the standard output,
-.B when a "%" symbol is reached,
-the function checks if it's a format specifier, so it will check if the next character is an 's' (for string), 'c' (for character), 'i' or 'd' (for numbers). If it's true, then it will call the respective function to format the arguments passed by the va_list.
+Arguments are in form of characters, numbers, or strings.
+.PP
+It iterates every character of the array and copies it to the standard output,
+.B when a "%" symbol is reached, _printf will check if the next character is a format specifier
+.PP
+If it's is, then it will call the respective function to format as many arguments passed through the va_list.
 .SH CONVERSION SPECIFIERS
 After a '%' is reached in the string, then it will check if the next character is:
 .PP
 .RS
 .B % - Prints a literal '%' symbol
 .PP
-.B s - String specifier, expects an array of characters, prints every character except the null byte
+.B s - String specifier, expects an array of characters, prints every character
 .PP
 .B c - Character specifier, will take a character as an int and print it
 .PP
-.B d, i - Number specifier, takes an int and process it while printing every single number as a character
+.B d, i - Number specifier, takes an integer or a decimal and process it printing every single number as a char
 .SH RETURN VALUE
-Upon successful return, the function will return the total number of characters printed (except the null byte used to end strings)
+Upon successful return, _printf will return the total number of characters printed (except the null byte used to end strings)
+.PP
+In case that the format string is empty, then the function returns (-1)
+.SH SEE ALSO
+man
+.B printf(3)
 .SH BUGS
 Unknown
 .SH AUTHOR
